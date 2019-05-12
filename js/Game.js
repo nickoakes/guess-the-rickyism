@@ -79,6 +79,7 @@ class Game {
     checkForWin() {
         if(!document.querySelectorAll('.hide').length) {
             document.querySelector('#overlay h2').innerHTML = "Right on!";
+            document.querySelector('#overlay h3').innerHTML = `(${this.activePhrase.phrase})`;
             this.missed = 0;
             this.gameOver();
             resetBoard();
