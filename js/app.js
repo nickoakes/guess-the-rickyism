@@ -1,8 +1,19 @@
-/* app.js */
+/* 
+    Guess the Rickyism
+    app.js
+*/
+
+//initialize a new game
+
 let newGame = new Game();
+
+//enable 'Start Game' button to start a new game
+
 document.querySelector('#btn__reset').addEventListener('click', () => {
     newGame.startGame();
 });
+
+//add click and keydown event listeners to keys in on-screen keyboard
 
 for(let i = 0; i < document.querySelectorAll('.key').length; i++) {
     document.querySelectorAll('.key')[i].addEventListener('click', (e) => newGame.handleInteraction(e))
@@ -11,6 +22,8 @@ for(let i = 0; i < document.querySelectorAll('.key').length; i++) {
 document.addEventListener('keydown', (e) => {
     newGame.handleKeyboardInteraction(e);
 })
+
+//reset board
 
 function resetBoard() {
     //remove phrase from display

@@ -1,10 +1,26 @@
+/*
+    Guess the Rickyism
+    Phrase.js
+*/
+
+//Phrase constructor class
+
 class Phrase {
     constructor(phrase) {
     this.phrase = phrase.toLowerCase();
 }
+
+//add randomly selected phrase to display
+
     addPhraseToDisplay() {
+
+//split phrase string into array of characters
+
         let phraseLetters = this.phrase.split('');
         phraseLetters.forEach(letter => {
+
+//create placeholder for each non-space and non-symbol character
+
             let placeholder = document.createElement('li');
             if(letter === " ") {
                 placeholder.className = "space";
@@ -17,6 +33,9 @@ class Phrase {
             }
             document.getElementById('phrase').firstElementChild.appendChild(placeholder);
         });
+
+//insert line breaks to prevent words from confusingly overflowing onto a new line
+
         const spacesArray = document.querySelectorAll('.section > ul > li.space');
         if(spacesArray.length >= 3 && spacesArray.length < 7) {
             document.querySelectorAll('.section > ul > li.space')[2].after(document.createElement('br'));
@@ -27,12 +46,15 @@ class Phrase {
         }
     }
 
+//check whether phrase contains the letter selected by the user
+
     checkLetter(letter) {
         if(this.phrase.includes(letter)) {
-            //event.target.classList.add('chosen');
             return true;
         }
     }
+
+//reveal correctly selected letter
 
     showMatchedLetter(letter) {
         let correctLetters = document.querySelectorAll(`.${letter}`);
@@ -41,6 +63,8 @@ class Phrase {
         }
     }
 }
+
+//store phrases in an array
 
 const phraseArray = [
     "A link is only as long as your longest strong chain",
@@ -77,6 +101,8 @@ const phraseArray = [
     "Denial and error",
     "All for all and one for one"
 ];
+
+//create dynamically-named variables to hold phrases and store them in a new array
 
 const phraseStrings = [];
 
